@@ -1,0 +1,83 @@
+li iskiya jon lupaki
+niwa tel jon lupatug
+
+isjiya am ika ti niva niri rampu
+
+ikiya vilari reka piwara jaril konka
+ulisho nisbu jon piwara che index
+ulisho lari che local code
+agsen lari piwara jarilcon typesbe
+ulisho pakaosliya bin nisbu reka ikiyabe sho
+
+sharipi ikiyaju ag reka che vilari yalon
+
+2:30
+
+npm i jose
+npx shadcn@latest add breadcrumb
+
+admin/dashboard
+:45
+npx shadcn@latest add form
+jonta 3:04
+npx shadcn@latest add form
+lari bin _CUR_
+3:34 conka
+https://ui.shadcn.com/docs/components/toast
+jonta 3:42
+
+rundev error
+getTotalPages
+src/firebase/server.ts (45:42)
+getProperties
+src/data/properties.ts (44:41)
+PropertySearch
+src/app/property-search/page.tsx (34:51)
+
+o encontrar en el video como crea los incdices.
+? claude seleni crearfirestore.indexes.jso
+
+{
+  "indexes": [
+    {
+      "collectionGroup": "properties",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {"fieldPath": "updated", "order": "DESCENDING"}
+      ]
+    },
+    {
+      "collectionGroup": "properties",
+      "queryScope": "COLLECTION", 
+      "fields": [
+        {"fieldPath": "status", "order": "ASCENDING"},
+        {"fieldPath": "updated", "order": "DESCENDING"}
+      ]
+    },
+    {
+      "collectionGroup": "properties",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {"fieldPath": "price", "order": "ASCENDING"},
+        {"fieldPath": "updated", "order": "DESCENDING"}
+      ]
+    },
+    {
+      "collectionGroup": "properties",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {"fieldPath": "bedrooms", "order": "ASCENDING"},
+        {"fieldPath": "updated", "order": "DESCENDING"}
+      ]
+    }
+  ]
+}
+
+?npx shadcn@latest add table
+LARI 4:07a ika pagination KONFI(FILE) firebase/server.ts
+
+jonta4_37
+
+7_57indexa
+
+npm --save @types/numeral
