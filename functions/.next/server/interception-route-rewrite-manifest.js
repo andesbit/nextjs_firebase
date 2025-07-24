@@ -1,0 +1,1 @@
+self.__INTERCEPTION_ROUTE_REWRITE_MANIFEST='[{"source":"/login","destination":"/property-search/(..)login","has":[{"type":"header","key":"Next-Url","value":"\\\\/property-search(?:\\\\/(.*))?[\\\\/#\\\\?]?"}]}]';

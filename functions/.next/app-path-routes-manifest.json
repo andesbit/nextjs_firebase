@@ -1,0 +1,17 @@
+{
+  "/_not-found/page": "/_not-found",
+  "/favicon.ico/route": "/favicon.ico",
+  "/api/refresh-token/route": "/api/refresh-token",
+  "/account/my-favourites/page": "/account/my-favourites",
+  "/account/page": "/account",
+  "/page": "/",
+  "/property/[propertyId]/page": "/property/[propertyId]",
+  "/(auth)/forgot-password/page": "/forgot-password",
+  "/(auth)/login/page": "/login",
+  "/(auth)/register/page": "/register",
+  "/admin-dashboard/edit/[propertyId]/page": "/admin-dashboard/edit/[propertyId]",
+  "/admin-dashboard/page": "/admin-dashboard",
+  "/admin-dashboard/new/page": "/admin-dashboard/new",
+  "/property-search/@modal/(..)login/page": "/property-search/(..)login",
+  "/property-search/page": "/property-search"
+}

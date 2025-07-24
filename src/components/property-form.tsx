@@ -25,10 +25,13 @@ import { Button } from "./ui/button";
 import { Property } from "@/types/property";
 import MultiImageUploader, { ImageUpload } from "./multi-image-uploader";
 
+// Definir el tipo explícitamente
+type PropertyFormData = z.infer<typeof propertySchema>;
+
 type Props = {
   submitButtonLabel: React.ReactNode;
-  handleSubmit: (data: z.infer<typeof propertySchema>) => void;
-  defaultValues?: z.infer<typeof propertySchema>;
+  handleSubmit: (data: PropertyFormData) => void;
+  defaultValues?: Partial<PropertyFormData>;
 };
 
 export default function PropertyForm({
@@ -36,26 +39,41 @@ export default function PropertyForm({
   submitButtonLabel,
   defaultValues,
 }: Props) {
-  const combinedDefaultValues: z.infer<typeof propertySchema> = {
-    ...{
-      address1: "",
-      address2: "",
-      city: "",
-      postcode: "",
-      price: 0,
-      bedrooms: 0,
-      bathrooms: 0,
-      status: "draft",
-      description: "",
-      images: [],
-    },
-    ...defaultValues,
+  // Valores por defecto con tipos correctos
+  const baseDefaultValues: PropertyFormData = {
+    address1: "",
+    address2: "",
+    city: "",
+    postcode: "",
+    price: 0, // número
+    bedrooms: 0, // número
+    bathrooms: 0, // número
+    status: "draft",
+    description: "",
+    images: [],
   };
 
-  const form = useForm<z.infer<typeof propertySchema>>({
+  // Combinar valores asegurando tipos correctos
+  const combinedDefaultValues: PropertyFormData = {
+    ...baseDefaultValues,
+    ...(defaultValues && {
+      ...defaultValues,
+      // Asegurar que los campos numéricos sean números
+      price: defaultValues.price ? Number(defaultValues.price) : 0,
+      bedrooms: defaultValues.bedrooms ? Number(defaultValues.bedrooms) : 0,
+      bathrooms: defaultValues.bathrooms ? Number(defaultValues.bathrooms) : 0,
+    }),
+  };
+
+  // Usar el tipo explícito
+  //const form = useForm<PropertyFormData>({
+  //  resolver: zodResolver(propertySchema),
+  //  defaultValues: combinedDefaultValues,
+  //});
+  const form = useForm({
     resolver: zodResolver(propertySchema),
     defaultValues: combinedDefaultValues,
-  });
+  }) as any;
 
   return (
     <Form {...form}>
@@ -155,7 +173,11 @@ export default function PropertyForm({
                 <FormItem>
                   <FormLabel>Price</FormLabel>
                   <FormControl>
-                    <Input {...field} type="number" />
+                    <Input 
+                      {...field} 
+                      type="number"
+                      onChange={(e) => field.onChange(Number(e.target.value) || 0)}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -168,7 +190,11 @@ export default function PropertyForm({
                 <FormItem>
                   <FormLabel>Bedrooms</FormLabel>
                   <FormControl>
-                    <Input {...field} type="number" />
+                    <Input 
+                      {...field} 
+                      type="number"
+                      onChange={(e) => field.onChange(Number(e.target.value) || 0)}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -181,7 +207,11 @@ export default function PropertyForm({
                 <FormItem>
                   <FormLabel>Bathrooms</FormLabel>
                   <FormControl>
-                    <Input {...field} type="number" />
+                    <Input 
+                      {...field} 
+                      type="number"
+                      onChange={(e) => field.onChange(Number(e.target.value) || 0)}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
